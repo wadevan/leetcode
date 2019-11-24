@@ -47,11 +47,38 @@
  * 
  */
 
+pub struct Solution {} 
 // @lc code=start
 impl Solution {
     pub fn is_palindrome(x: i32) -> bool {
-        
+        if x < 0{
+            return false
+        }
+        let mut cur: i32 = x;
+        let mut res: i32 = 0;
+        while cur != 0 {
+            match res.checked_mul(10) {
+                None => return false,
+                Some(tmp) => match tmp.checked_add(cur % 10) {
+                    None => return false,
+                    Some(fine) => {
+                        res = fine;
+                    }
+                },
+            }
+            cur = cur / 10;
+        }
+        return cur == x
     }
 }
 // @lc code=end
 
+
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_9() {
+        assert_eq!(true, Solution::is_palindrome(121));
+    }
+}
