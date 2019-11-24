@@ -1,3 +1,4 @@
+package golang
 /*
  * @lc app=leetcode.cn id=51 lang=golang
  *
@@ -44,7 +45,7 @@
 
 // @lc code=start
 func solveNQueens(n int) [][]string {
-    
+    return nil
 }
 // @lc code=end
 
