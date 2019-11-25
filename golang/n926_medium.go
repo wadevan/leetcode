@@ -57,9 +57,56 @@ package golang
  */
 
 // @lc code=start
-func minFlipsMonoIncr(S string) int {
+func minFlipsMonoIncr1(S string) int {
+	data := []byte(S)
 
-	return 0
+	dp := [20000]int{}
+	numOfOne := 0
+	if data[0] == '1' {
+		numOfOne = 1
+	}
+
+	for i := 1; i < len(data); i++ {
+		if data[i] == '1' {
+			numOfOne += 1
+			dp[i] = min(dp[i-1], numOfOne)
+		} else {
+			dp[i] = min(dp[i-1]+1, numOfOne)
+		}
+	}
+	return dp[len(data)-1]
+
+}
+func min(a, b int) int {
+	if a < b {
+		return a
+	}
+	return b
+}
+
+func minFlipsMonoIncr(S string) int {
+	data := []byte(S)
+	e := make([]int, len(S))
+	cntOfZero, cntOfOne := 0, 0
+	for i := len(data) - 1; i >= 0; i-- {
+		if data[i] == '0' {
+			cntOfZero++
+		} else {
+			e[i] = cntOfZero
+		}
+	}
+	res := 20000
+	if len(data)-cntOfZero < res {
+		res = len(data) - cntOfZero
+	}
+	for i := 0; i < len(data); i++ {
+		if data[i] == '0' {
+			continue
+		}
+		res = min(cntOfOne+e[i], res)
+		cntOfOne++
+	}
+	return res
 }
 
 // @lc code=end
