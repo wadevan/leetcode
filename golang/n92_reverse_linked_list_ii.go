@@ -37,8 +37,19 @@ package golang
  * }
  */
 func reverseBetween(head *ListNode, m int, n int) *ListNode {
-	return nil
-
+	dummy := new(ListNode)
+	head, dummy.Next = dummy, head
+	for i := 0; i < m-1; i++ { head = head.Next }
+	var curr, prev *ListNode = head.Next, nil
+	for i := 0; i < n - m + 1; i++ {
+		next := curr.Next
+		curr.Next = prev
+		prev = curr
+		curr = next
+	}
+	head.Next.Next = curr
+	head.Next = prev
+	return dummy.Next
 }
 
 // @lc code=end

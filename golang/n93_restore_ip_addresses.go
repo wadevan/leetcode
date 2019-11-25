@@ -44,8 +44,7 @@ func restoreIpAddresses(s string) []string {
 	return strings
 }
 
-func gen(index int, data []byte) []string{
-
+func gen(index int, data []byte) []string {
 	res := []string{}
 	end := len(data)
 	for i := 0; i < end; i++ {
@@ -71,11 +70,9 @@ func gen(index int, data []byte) []string{
 }
 
 func isValid(cur string) bool {
-
-	if len(cur)>1 && strings.HasPrefix(cur, "0"){
+	if len(cur) > 1 && strings.HasPrefix(cur, "0") {
 		return false
 	}
-
 	i, _ := strconv.Atoi(cur)
 	if i <= 255 {
 		return true

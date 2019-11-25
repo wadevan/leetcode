@@ -1,5 +1,12 @@
 package golang
 
+type TreeNode struct {
+	Val   int
+	Left  *TreeNode
+	Right *TreeNode
+}
+
+
 // NULL 方便添加测试数据
 const NULL = -1 << 63
 
@@ -37,3 +44,4 @@ func Ints2TreeNode(ints []int) *TreeNode {
 
 	return root
 }
+
