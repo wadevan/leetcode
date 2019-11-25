@@ -83,17 +83,17 @@ func verticalOrder(root *TreeNode) [][]int {
 	table := map[int][]int{}
 	orderKey := []int{}
 
-	for len(q) != 0{
+	for len(q) != 0 {
 		obj, idx := q[0], qi[0]
-		q , qi= q[1:], qi[1:]
-		if _, ok := table[idx]; !ok{
+		q, qi = q[1:], qi[1:]
+		if _, ok := table[idx]; !ok {
 			orderKey = append(orderKey, idx)
 		}
 		table[idx] = append(table[idx], obj.Val)
-		if nil != obj.Left{
+		if nil != obj.Left {
 			q, qi = append(q, obj.Left), append(qi, idx-1)
 		}
-		if nil != obj.Right{
+		if nil != obj.Right {
 			q, qi = append(q, obj.Right), append(qi, idx+1)
 		}
 	}

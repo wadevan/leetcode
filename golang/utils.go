@@ -3,7 +3,6 @@ package golang
 // NULL 方便添加测试数据
 const NULL = -1 << 63
 
-
 // Ints2TreeNode 利用 []int 生成 *TreeNode
 func Ints2TreeNode(ints []int) *TreeNode {
 	n := len(ints)

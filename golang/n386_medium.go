@@ -25,7 +25,6 @@ package golang
  *
  */
 
-
 // @lc code=start
 func lexicalOrder(n int) []int {
 	res := []int{}
